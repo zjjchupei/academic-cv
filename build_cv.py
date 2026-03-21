@@ -264,7 +264,6 @@ def generate_onepage_tex(school: str, selected: list) -> Path:
 
     lines.extend([
         r"\vfill",
-        r"\center{\footnotesize Last updated: \today}",
         r"\end{document}",
     ])
 
