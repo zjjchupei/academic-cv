@@ -1,108 +1,55 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2021 Jitin Nair
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%-------------------------------------------------------------------------------
+%   The MIT License (MIT) - Original template by Jitin Nair
+%   Modified for academic use by Pei (Amy) Chu
+%-------------------------------------------------------------------------------
+
+\documentclass[a4paper,10pt]{article}
 
 %----------------------------------------------------------------------------------------
-%	DOCUMENT DEFINITION
-%----------------------------------------------------------------------------------------
-
-% article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
-
-%----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES
+%   PACKAGES
 %----------------------------------------------------------------------------------------
 \usepackage{url}
-\usepackage{parskip} 	
-
-%other packages for formatting
+\usepackage{parskip}
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9]{geometry}
-
-%tabularx environment
+\usepackage[scale=0.92]{geometry}
 \usepackage{tabularx}
-
-%for lists within experience section
 \usepackage{enumitem}
-
-% centered version of 'X' col. type
-\newcolumntype{C}{>{\centering\arraybackslash}X} 
-
-%to prevent spillover of tabular into next pages
+\newcolumntype{C}{>{\centering\arraybackslash}X}
 \usepackage{supertabular}
-\usepackage{tabularx}
 \newlength{\fullcollw}
 \setlength{\fullcollw}{0.47\textwidth}
-
-%custom \section
-\usepackage{titlesec}				
+\usepackage{titlesec}
 \usepackage{multicol}
 \usepackage{multirow}
 
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
+% Section formatting
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
+\titlespacing{\section}{0pt}{8pt}{6pt}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+% Subsection formatting
+\titleformat{\subsection}{\normalsize\bfseries\raggedright}{}{0em}{}
+\titlespacing{\subsection}{0pt}{4pt}{2pt}
 
-%Setup hyperref package, and colours for links
+% Publications
+\usepackage[style=authoryear,sorting=ydnt,maxbibnames=10,minbibnames=10]{biblatex}
+
+% Hyperref
 \usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
 \addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
+\setlength\bibitemsep{0.5em}
 
-%for social icons
+% Font Awesome icons
 \usepackage{fontawesome5}
 
-%debug page outer frames
-%\usepackage{showframe}
-
-
-% job listing environments
+% Custom environments
 \newenvironment{jobshort}[2]
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \textbf{#1} & \hfill &  #2 \\[3pt]
     \end{tabularx}
     }
     {
@@ -111,104 +58,241 @@
 \newenvironment{joblong}[2]
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \textbf{#1} & \hfill &  #2 \\[3pt]
     \end{tabularx}
     \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=2pt,label=--]
     }
     {
     \end{itemize}
-    \end{minipage}    
+    \end{minipage}
     }
 
-
-
 %----------------------------------------------------------------------------------------
-%	BEGIN DOCUMENT
+%   BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
 \begin{document}
-
-% non-numbered pages
-\pagestyle{empty} 
+\pagestyle{empty}
 
 %----------------------------------------------------------------------------------------
-%	TITLE
+%   HEADER
 %----------------------------------------------------------------------------------------
-
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{Pei (Amy) Chu} \\[5pt]
+{\normalsize PhD Candidate in Accounting and Finance $\cdot$ CFA Level II} \\[5pt]
+\href{mailto:zjjxitongchu@gmail.com}{\raisebox{-0.05\height}\faEnvelope\ zjjxitongchu@gmail.com} \ $|$ \
+\href{tel:+447421726955}{\raisebox{-0.05\height}\faMobile\ +44\,7421\,726955} \ $|$ \
+\raisebox{-0.05\height}\faMapMarker*\ Edinburgh, UK \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% EXPERIENCE SECTIONS
+%   PERSONAL STATEMENT
 %----------------------------------------------------------------------------------------
-
-%Interests/ Keywords/ Summary
-\section{Summary}
-This CV can also be automatically compiled and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
-
-%Experience
-\section{Work Experience}
-
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
-
-
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
-\end{joblong}
-  
-%Projects
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
-\end{tabularx}
+\section{Profile}
+PhD researcher in corporate governance and technology management, with expertise in machine learning, survival analysis, and panel data econometrics. Doctoral research investigates the timing and dynamics of Chief Technology Officer appointments, contributing to upper echelons theory and strategic leadership literature. Eight years of professional experience in financial policy analysis at the People's Bank of China. Three years of university teaching experience with 400+ students taught. Seeking a research-focused academic position in business and management.
 
 %----------------------------------------------------------------------------------------
-%	EDUCATION
+%   EDUCATION
 %----------------------------------------------------------------------------------------
 \section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
 
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{PhD in Accounting and Finance} & & 2021 -- 2026 (expected) \\
+\end{tabularx}
+\textit{The University of Edinburgh}, Edinburgh, UK
+\begin{itemize}[nosep, leftmargin=1em, itemsep=2pt, label=--]
+    \item Thesis: \textit{The Timing and Dynamics of Chief Technology Officer Appointment}
+    \item Supervisors: Prof.\ Jake Ansell (Primary), Prof.\ Tina Harrison (Secondary)
+    \item Methods: Survival Analysis (Cox/PWP), GAMM, XGBoost, PSM, Event Studies, Panel Econometrics
+    \item Edinburgh Award Scholarship (\textsterling30,000)
+\end{itemize}
 
-2022 & Class 12th Some Board \hfill  (Grades) \\
+\vspace{4pt}
 
-2021 & Class 10th Some Board \hfill  (Grades) \\
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{PGCert in Academic Practice} & & 2023 -- 2024 \\
+\end{tabularx}
+\textit{The University of Edinburgh} -- Curriculum design, assessment, inclusive teaching
+
+\vspace{4pt}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{MSc in Banking and Finance -- Distinction} (77.3\%) & & 2019 -- 2020 \\
+\end{tabularx}
+\textit{Newcastle University}, Newcastle upon Tyne, UK
+\begin{itemize}[nosep, leftmargin=1em, itemsep=2pt, label=--]
+    \item Dissertation: \textit{CEO Gender, Culture Difference, and Cross-border M\&A Performance} (80\%, Outstanding)
+    \item Outstanding Graduate Award (2019)
+\end{itemize}
+
+\vspace{4pt}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{MEng in Financial Software Engineering} & & 2011 -- 2014 \\
+\end{tabularx}
+\textit{Hunan University} (Project 985), China
+\begin{itemize}[nosep, leftmargin=1em, itemsep=2pt, label=--]
+    \item Dissertation system promoted and implemented across PBOC system
+\end{itemize}
+
+\vspace{4pt}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{BMan in Accounting} & & 2007 -- 2011 \\
+\end{tabularx}
+\textit{Hunan University of Technology and Business}, China
+
+%----------------------------------------------------------------------------------------
+%   RESEARCH INTERESTS
+%----------------------------------------------------------------------------------------
+\section{Research Interests}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Corporate Governance} & Executive appointments, board composition, technology leadership \\
+\textbf{Technology Management} & CTO role evolution, digital transformation, innovation strategy \\
+\textbf{Quantitative Methods} & Machine learning in finance, predictive modelling, causal inference \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-%	PUBLICATIONS
+%   PUBLICATIONS (auto-generated from citations.bib)
 %----------------------------------------------------------------------------------------
 \section{Publications}
+
+\subsection{International Peer-Reviewed Journal Articles (SSCI)}
 \begin{refsection}[citations.bib]
-\nocite{*}
+\nocite{chu2024boardroom}
+\printbibliography[heading=none]
+\end{refsection}
+
+\subsection{Working Papers (from PhD Thesis)}
+\begin{refsection}[citations.bib]
+\nocite{chu2026market,chu2026diffusion,chu2026survival,chu2026predicting}
+\printbibliography[heading=none]
+\end{refsection}
+
+\subsection{Chinese Peer-Reviewed Journal Articles (9 articles, 2014--2017)}
+\begin{refsection}[citations.bib]
+\nocite{chu2017fiscal,chu2017budget,chu2017treasury,chu2017npc,chu2017realestate,chu2016vat,chu2015stock,chu2014treasury,chu2014debt}
 \printbibliography[heading=none]
 \end{refsection}
 
 %----------------------------------------------------------------------------------------
-%	SKILLS
+%   CONFERENCE PRESENTATIONS
 %----------------------------------------------------------------------------------------
-\section{Skills}
+\section{Conference Presentations}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{FMA Annual Meeting} & Grapevine, Texas & Oct 2024 \\
+\end{tabularx}
+``Board Gender Diversity and Cross-border M\&A: Premium and Performance Evidence from China''
+
+%----------------------------------------------------------------------------------------
+%   TEACHING EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Teaching Experience}
+
+\begin{joblong}{Teaching Assistant -- Introduction to Corporate Finance}{2022 -- Present}
+\item \textit{The University of Edinburgh}
+\item Delivered \textbf{120+ tutorial sessions} to \textbf{400+ students} over 3 years covering investment decisions, capital structure, and risk management
+\item Marked and provided detailed feedback on \textbf{85+ student reports} per semester
+\item Designed problem-solving exercises using real-world corporate finance cases
+\item Held weekly office hours for one-on-one student guidance
+\end{joblong}
+
+\vspace{4pt}
+
+\begin{joblong}{Expert Supervisor -- MSc Finance Dissertations}{2023 -- Present}
+\item \textit{The University of Edinburgh}
+\item Supervised \textbf{20+ MSc dissertations} in corporate finance, M\&A, and corporate governance
+\item \textbf{5 dissertations} awarded Distinction grade
+\item Provided guidance on quantitative research methodology including event studies and panel data analysis
+\end{joblong}
+
+\vspace{4pt}
+
+\begin{jobshort}{Mentor -- Global Business Challenge}{2023 -- 2024}
+\textit{The University of Edinburgh} -- Mentored student teams in international business case competitions
+\end{jobshort}
+
+%----------------------------------------------------------------------------------------
+%   RESEARCH EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Research Experience}
+
+\begin{joblong}{Research Assistant}{2021 -- Present}
+\item \textit{The University of Edinburgh Business School}
+\item Contributed to NatWest Bank-funded research project analysing global youth lending patterns
+\item Authored research reports and delivered live presentations of findings
+\item Selected for \textbf{PhD Research Assistant Think Tank} -- only 10 students selected across entire Business School
+\item Conducted quantitative analysis using panel data methods and machine learning techniques
+\end{joblong}
+
+%----------------------------------------------------------------------------------------
+%   PROFESSIONAL EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Professional Experience}
+
+\begin{joblong}{Deputy Director -- Personnel \& Secretariat}{2017 -- 2019}
+\item \textit{People's Bank of China, Hunan Branch (Wangcheng Sub-branch)}
+\item Managed comprehensive office operations including research report writing and policy analysis
+\item Coordinated law enforcement inspections and evaluations of financial institutions
+\item Coordinated union activities and managed party construction initiatives
+\end{joblong}
+
+\vspace{4pt}
+
+\begin{joblong}{Treasury Statistics Analyst}{2011 -- 2017}
+\item \textit{People's Bank of China, Yiyang Central Branch} (6 years)
+\item Conducted treasury statistics analysis and prepared reports for senior management
+\item Investigated and authored 9 research papers on emerging financial issues
+\item Performed law enforcement inspections on treasury agency business banks
+\end{joblong}
+
+%----------------------------------------------------------------------------------------
+%   LEADERSHIP & SERVICE
+%----------------------------------------------------------------------------------------
+\section{Leadership \& Service}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{Campus Ambassador} & Only PhD student representative, Edinburgh Business School & 2021 -- Present \\
+\textbf{Residence Assistant} & Coordinated 30+ events annually for 200+ residents & 2021 -- Present \\
+\textbf{English Language Volunteer} & North East Solidarity \& Teaching Group (refugees) & 2019 -- 2020 \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   RESEARCH SKILLS
+%----------------------------------------------------------------------------------------
+\section{Research Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+\textbf{Quantitative Methods} & Panel data econometrics, survival analysis (Cox/PWP), machine learning (XGBoost, Random Forest), GAMM, propensity score matching, event studies \\
+\textbf{Software} & Stata (Advanced, 5+ yrs), Python (Advanced, 3+ yrs), R (Intermediate, 2+ yrs), \LaTeX\ (Advanced) \\
+\textbf{Data Sources} & WRDS (Compustat, CRSP, BoardEx, ExecuComp), Bloomberg, Wind Database \\
+\textbf{Languages} & Mandarin Chinese (Native), English (Fluent) \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   AWARDS AND HONOURS
+%----------------------------------------------------------------------------------------
+\section{Awards and Honours}
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{Edinburgh Award Scholarship} (\textsterling30,000) & University of Edinburgh & 2021 \\
+Outstanding Graduate & Newcastle University & 2019 \\
+Excellent Lecturer -- ``Three Hundred'' Projects & People's Bank of China & 2018 \\
+Outstanding Party Member & PBOC Changsha Branch & 2018 \\
+Outstanding Party Member & PBOC Changsha Branch & 2016 \\
+Top Ten Clerks of Year 2014 & PBOC Yiyang Branch & 2015 \\
+Speech Competition First Prize & PBOC Wuhan \& Hunan Branch & 2014 \\
+Top Ten Clerks & PBOC Yiyang Branch & 2013 \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   PROFESSIONAL CERTIFICATIONS
+%----------------------------------------------------------------------------------------
+\section{Professional Certifications}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{CFA Level II} & Passed \\
+\textbf{Certificate of Accounting Professional} & China (equivalent to professional accounting certification) \\
+\textbf{Intermediate Accountant Certificate} & China (financial accounting, management accounting, taxation) \\
+\textbf{Advanced Business English} & \\
 \end{tabularx}
 
 \vfill
