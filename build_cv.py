@@ -383,6 +383,7 @@ if __name__ == "__main__":
     parser.add_argument("--school", help="School short name")
     parser.add_argument("--jd", help="Path to job description")
     parser.add_argument("--preset", choices=["research", "teaching", "balanced"])
+    parser.add_argument("--full", action="store_true", help="Generate full CV (all atoms, no page limit)")
     parser.add_argument("--list", action="store_true")
     parser.add_argument("--report-only", action="store_true")
     parser.add_argument("--deploy", help="Copy to school folder")
@@ -390,6 +391,56 @@ if __name__ == "__main__":
 
     if args.list:
         list_atoms()
+
+    elif args.full:
+        # Full CV: ALL atoms, no page limit → cv.tex (root)
+        inv = load_inventory()
+        print(f"\n  FULL MODE — all atoms, no page limit")
+
+        all_atoms = []
+        for atom_id, atom in inv.items():
+            all_atoms.append({
+                'id': atom_id, 'atom': atom,
+                'score': 100 if atom.get('fixed') else atom.get('priority', 5),
+                'matched_criteria': atom.get('proves', []),
+                'lines': atom.get('lines', 1)
+            })
+
+        # Pick balanced profile
+        profiles = [a for a in all_atoms if a['atom'].get('variant_of') == 'profile']
+        non_profiles = [a for a in all_atoms if not a['atom'].get('variant_of')]
+        best = next((p for p in profiles if 'balanced' in p['id']), profiles[0] if profiles else None)
+
+        selected = list(non_profiles)
+        if best:
+            selected.append(best)
+
+        used = sum(a['lines'] for a in selected)
+
+        # Generate as schools/full.tex then copy to cv.tex
+        tex = generate_onepage_tex("full", selected)
+        import shutil
+        root_tex = SCRIPT_DIR / "cv.tex"
+        shutil.copy2(tex, root_tex)
+        print(f"  Generated: cv.tex ({len(selected)} atoms, ~{used} lines)")
+
+        subprocess.run(
+            ["latexmk", "-pdf", "-interaction=nonstopmode", "cv.tex"],
+            cwd=str(SCRIPT_DIR), capture_output=True, text=True
+        )
+        pdf = SCRIPT_DIR / "cv.pdf"
+        if pdf.exists():
+            try:
+                r = subprocess.run(["pdfinfo", str(pdf)], capture_output=True, text=True)
+                for line in r.stdout.split('\n'):
+                    if 'Pages:' in line:
+                        pages = int(line.split(':')[1].strip())
+                        print(f"  ✅ {pages} page(s) — {pdf}")
+            except:
+                print(f"  PDF: {pdf}")
+        else:
+            print("  ❌ Compilation failed")
+
     elif args.school and (args.jd or args.preset):
         inv = load_inventory()
         print(f"\n  Loaded {len(inv)} atoms")
