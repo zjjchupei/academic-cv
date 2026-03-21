@@ -1,0 +1,587 @@
+# =============================================================================
+# Content Inventory — Every possible CV bullet, tagged with criteria it proves
+# =============================================================================
+# Each atom has:
+#   text:     LaTeX-ready content (one bullet)
+#   lines:    estimated lines when rendered at 10pt
+#   proves:   list of criteria tags this atom provides evidence for
+#   section:  which CV section it belongs to
+#   priority: base priority (0-10, adjusted per JD)
+# =============================================================================
+
+# ─────────────────────────────────────────────────────────────────────────────
+# HEADER (always included, ~3 lines)
+# ─────────────────────────────────────────────────────────────────────────────
+header:
+  section: header
+  text: "Pei (Amy) Chu | PhD Candidate | CFA Level II | Edinburgh, UK"
+  lines: 3
+  proves: [identity, cfa, location]
+  priority: 10
+  fixed: true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PROFILE VARIANTS (choose one, ~4 lines each)
+# ─────────────────────────────────────────────────────────────────────────────
+profile_research:
+  section: profile
+  variant_of: profile
+  text: "PhD researcher... expertise in ML, survival analysis... upper echelons theory... 8 years PBOC"
+  lines: 4
+  proves: [phd, research_focus, quantitative_methods, industry_experience, research_vision]
+  priority: 10
+
+profile_teaching:
+  section: profile
+  variant_of: profile
+  text: "PhD researcher... PGCert... 120+ tutorials, 400+ students... 20+ dissertations... PBOC real-world insights"
+  lines: 4
+  proves: [phd, teaching_focus, teaching_qualification, quantified_teaching, industry_experience]
+  priority: 10
+
+profile_balanced:
+  section: profile
+  variant_of: profile
+  text: "PhD researcher... 400+ students... SSCI ABS 3-star... 8 years PBOC"
+  lines: 4
+  proves: [phd, research_focus, teaching_focus, quantitative_methods, industry_experience]
+  priority: 10
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EDUCATION (~12 lines for all, ~8 lines compact)
+# ─────────────────────────────────────────────────────────────────────────────
+edu_phd_title:
+  section: education
+  text: "PhD in Accounting and Finance, University of Edinburgh, 2021--2026"
+  lines: 1
+  proves: [phd, accounting_finance, russell_group, uk_institution]
+  priority: 10
+  fixed: true
+
+edu_phd_thesis:
+  section: education
+  text: "Thesis: The Timing and Dynamics of CTO Appointment"
+  lines: 1
+  proves: [research_topic, corporate_governance, technology_management]
+  priority: 9
+
+edu_phd_supervisors:
+  section: education
+  text: "Supervisors: Prof. Jake Ansell (Primary), Prof. Tina Harrison (Secondary)"
+  lines: 1
+  proves: [supervised_research, academic_network]
+  priority: 5
+
+edu_phd_methods:
+  section: education
+  text: "Methods: Survival Analysis (Cox/PWP), GAMM, XGBoost, PSM, Event Studies, Panel Econometrics"
+  lines: 1
+  proves: [quantitative_methods, ML_skills, advanced_statistics, econometrics]
+  priority: 8
+
+edu_phd_scholarship:
+  section: education
+  text: "Edinburgh Award Scholarship (£30,000)"
+  lines: 1
+  proves: [funding_track_record, research_quality, competitive_award]
+  priority: 7
+
+edu_pgcert:
+  section: education
+  text: "PGCert in Academic Practice, University of Edinburgh, 2023--2024"
+  lines: 1
+  proves: [teaching_qualification, HEA_equivalent, pedagogy, curriculum_design]
+  priority: 5
+  priority_boost:
+    teaching_experience: 4  # boost to 9 for teaching-focused jobs
+
+edu_msc_title:
+  section: education
+  text: "MSc Banking and Finance -- Distinction (77.3%), Newcastle University, 2019--2020"
+  lines: 1
+  proves: [masters_degree, distinction, banking_finance, uk_institution]
+  priority: 8
+  fixed: true
+
+edu_msc_dissertation:
+  section: education
+  text: "Dissertation: CEO Gender and Cross-border M&A Performance (80%, Outstanding)"
+  lines: 1
+  proves: [research_skills, corporate_governance, gender_diversity, international_business]
+  priority: 6
+
+edu_msc_award:
+  section: education
+  text: "Outstanding Graduate Award (2019)"
+  lines: 1
+  proves: [academic_achievement, competitive_award]
+  priority: 4
+
+edu_meng:
+  section: education
+  text: "MEng Financial Software Engineering, Hunan University (985), 2011--2014"
+  lines: 1
+  proves: [engineering_degree, software_skills, chinese_university, quantitative_background]
+  priority: 5
+  fixed: true
+
+edu_meng_detail:
+  section: education
+  text: "Dissertation system promoted and implemented across PBOC system"
+  lines: 1
+  proves: [practical_impact, software_development, institutional_adoption]
+  priority: 3
+
+edu_bsc:
+  section: education
+  text: "BMan Accounting, Hunan University of Technology and Business, 2007--2011"
+  lines: 1
+  proves: [accounting_degree, undergraduate, chinese_university]
+  priority: 4
+  fixed: true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# RESEARCH INTERESTS (~3 lines)
+# ─────────────────────────────────────────────────────────────────────────────
+ri_corporate_governance:
+  section: research_interests
+  text: "Corporate Governance: Executive appointments, board composition, technology leadership"
+  lines: 1
+  proves: [research_interests, corporate_governance, executive_appointments]
+  priority: 6
+
+ri_technology_management:
+  section: research_interests
+  text: "Technology Management: CTO role evolution, digital transformation, innovation strategy"
+  lines: 1
+  proves: [research_interests, technology_management, digital_transformation, innovation]
+  priority: 5
+
+ri_quantitative_methods:
+  section: research_interests
+  text: "Quantitative Methods: ML in finance, predictive modelling, causal inference"
+  lines: 1
+  proves: [research_interests, quantitative_methods, ML_skills, causal_inference]
+  priority: 5
+
+ri_sustainable_finance:
+  section: research_interests
+  text: "Sustainable Finance: ESG integration, corporate sustainability, responsible investment"
+  lines: 1
+  proves: [research_interests, sustainable_finance, ESG, responsible_business]
+  priority: 3
+  priority_boost:
+    sustainable_finance: 5
+    ESG: 5
+
+ri_banking:
+  section: research_interests
+  text: "Banking and Financial Regulation: Central banking, monetary policy, financial stability"
+  lines: 1
+  proves: [research_interests, banking, financial_regulation, central_banking]
+  priority: 3
+  priority_boost:
+    banking: 5
+    financial_regulation: 5
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PUBLICATIONS (~2-6 lines depending on selection)
+# ─────────────────────────────────────────────────────────────────────────────
+pub_ssci:
+  section: publications
+  text: "Chu, P. (2024). IJFE, 29(1), 286-303. ABS 3-star, SSCI, sole author."
+  lines: 2
+  proves: [publication_record, research_quality, REF_able, sole_author, SSCI, ABS_3star, peer_reviewed]
+  priority: 10
+  fixed: true
+
+pub_working_papers:
+  section: publications
+  text: "4 Working Papers: targeting J. Corporate Finance, SMJ, J. Management, JBR"
+  lines: 1
+  proves: [research_pipeline, publication_potential, top_journal_targets, active_research]
+  priority: 8
+
+pub_wp_market_reactions:
+  section: publications
+  text: "Market Reactions to CTO Appointments: Evidence from S&P 1500 Firms [Target: JCF]"
+  lines: 1
+  proves: [event_study, corporate_governance, market_reactions, US_data]
+  priority: 6
+
+pub_wp_diffusion:
+  section: publications
+  text: "The Diffusion of CTOs: From Innovation to Legitimation [Target: SMJ]"
+  lines: 1
+  proves: [institutional_theory, diffusion, strategy, longitudinal_study]
+  priority: 6
+
+pub_wp_survival:
+  section: publications
+  text: "When Do Firms Appoint CTOs? A Survival Analysis [Target: J. Management]"
+  lines: 1
+  proves: [survival_analysis, appointment_timing, advanced_methods]
+  priority: 6
+
+pub_wp_predicting:
+  section: publications
+  text: "Predicting CTO Appointments: Nonlinear Relationships and Threshold Effects [Target: JBR]"
+  lines: 1
+  proves: [ML_skills, prediction, nonlinear_methods, GAMM]
+  priority: 6
+
+pub_chinese_summary:
+  section: publications
+  text: "9 Chinese peer-reviewed articles on fiscal policy and treasury management (2014-2017)"
+  lines: 1
+  proves: [publication_volume, policy_research, prolific_output, chinese_publications]
+  priority: 4
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONFERENCE (~2 lines)
+# ─────────────────────────────────────────────────────────────────────────────
+conf_fma:
+  section: conference
+  text: "FMA Annual Meeting, Texas (Oct 2024): Board Gender Diversity and Cross-border M&A"
+  lines: 2
+  proves: [conference_presentation, international_conference, research_dissemination, FMA]
+  priority: 6
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TEACHING EXPERIENCE
+# ─────────────────────────────────────────────────────────────────────────────
+teach_ta_header:
+  section: teaching
+  text: "Teaching Assistant -- Introduction to Corporate Finance, Edinburgh, 2022--Present"
+  lines: 1
+  proves: [teaching_experience_UG, corporate_finance_teaching, continuous_teaching]
+  priority: 8
+
+teach_ta_tutorials:
+  section: teaching
+  text: "Delivered 120+ tutorial sessions to 400+ students over 3 years"
+  lines: 1
+  proves: [quantified_teaching, sustained_teaching, large_cohort, tutorial_delivery]
+  priority: 8
+
+teach_ta_marking:
+  section: teaching
+  text: "Marked and provided detailed feedback on 85+ student reports per semester"
+  lines: 1
+  proves: [assessment_experience, feedback_skills, workload_capacity, marking]
+  priority: 6
+
+teach_ta_exercises:
+  section: teaching
+  text: "Designed problem-solving exercises using real-world corporate finance cases"
+  lines: 1
+  proves: [curriculum_design, case_based_teaching, material_development, innovation_teaching]
+  priority: 5
+
+teach_ta_office:
+  section: teaching
+  text: "Held weekly office hours for one-on-one student guidance"
+  lines: 1
+  proves: [student_support, pastoral_care, accessibility]
+  priority: 3
+
+teach_supervisor_header:
+  section: teaching
+  text: "Expert Supervisor -- MSc Finance Dissertations, Edinburgh, 2023--Present"
+  lines: 1
+  proves: [supervision_PG, research_supervision, postgraduate_teaching]
+  priority: 7
+
+teach_supervisor_numbers:
+  section: teaching
+  text: "Supervised 20+ MSc dissertations in corporate finance, M&A, and governance"
+  lines: 1
+  proves: [quantified_supervision, supervision_PG, research_mentoring]
+  priority: 7
+
+teach_supervisor_distinction:
+  section: teaching
+  text: "5 dissertations awarded Distinction grade"
+  lines: 1
+  proves: [student_outcomes, teaching_quality, supervision_excellence]
+  priority: 6
+
+teach_supervisor_methods:
+  section: teaching
+  text: "Guided quantitative methodology: event studies, panel data analysis"
+  lines: 1
+  proves: [methods_teaching, research_methods_guidance, quantitative_supervision]
+  priority: 4
+
+teach_mentor:
+  section: teaching
+  text: "Mentor -- Global Business Challenge, Edinburgh, 2023--2024"
+  lines: 1
+  proves: [mentoring, international_business, student_competition, team_mentoring]
+  priority: 3
+
+teach_modules_can_teach:
+  section: teaching
+  text: "Prepared to teach: Corporate Finance, Financial Statement Analysis, Sustainable Finance, Quantitative Methods, AI/ML for Finance"
+  lines: 1
+  proves: [teaching_breadth, module_delivery, new_module_proposal, curriculum_knowledge]
+  priority: 5
+  priority_boost:
+    teaching_experience: 4
+
+# ─────────────────────────────────────────────────────────────────────────────
+# RESEARCH EXPERIENCE
+# ─────────────────────────────────────────────────────────────────────────────
+ra_header:
+  section: research_experience
+  text: "Research Assistant, University of Edinburgh Business School, 2021--Present"
+  lines: 1
+  proves: [research_experience, employed_researcher, edinburgh]
+  priority: 6
+
+ra_natwest:
+  section: research_experience
+  text: "Contributed to NatWest Bank-funded research on global youth lending patterns"
+  lines: 1
+  proves: [funded_research, industry_collaboration, banking_research, external_funding]
+  priority: 6
+
+ra_presentations:
+  section: research_experience
+  text: "Authored research reports and delivered live presentations of findings"
+  lines: 1
+  proves: [research_communication, presentation_skills, report_writing]
+  priority: 4
+
+ra_think_tank:
+  section: research_experience
+  text: "Selected for PhD Research Assistant Think Tank -- only 10 across Business School"
+  lines: 1
+  proves: [competitive_selection, research_excellence, peer_recognition]
+  priority: 5
+
+ra_methods:
+  section: research_experience
+  text: "Conducted quantitative analysis using panel data and ML techniques"
+  lines: 1
+  proves: [quantitative_methods, ML_skills, data_analysis, applied_research]
+  priority: 4
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PROFESSIONAL EXPERIENCE
+# ─────────────────────────────────────────────────────────────────────────────
+prof_deputy_header:
+  section: professional
+  text: "Deputy Director, People's Bank of China, Hunan Branch, 2017--2019"
+  lines: 1
+  proves: [industry_experience, leadership, central_banking, management, seniority]
+  priority: 6
+
+prof_deputy_policy:
+  section: professional
+  text: "Managed policy analysis and coordinated regulatory inspections across provincial branch"
+  lines: 1
+  proves: [policy_analysis, regulatory_experience, financial_regulation, management]
+  priority: 5
+
+prof_deputy_banks:
+  section: professional
+  text: "Liaised with 50+ commercial banks on regulatory compliance and reporting standards"
+  lines: 1
+  proves: [stakeholder_management, banking_sector, regulatory_compliance, large_scale]
+  priority: 4
+
+prof_analyst_header:
+  section: professional
+  text: "Treasury Statistics Analyst, People's Bank of China, Yiyang Branch, 2011--2017 (6 yrs)"
+  lines: 1
+  proves: [industry_experience, treasury, statistics, central_banking, long_tenure]
+  priority: 6
+
+prof_analyst_papers:
+  section: professional
+  text: "Authored 9 research papers on emerging financial issues"
+  lines: 1
+  proves: [research_in_practice, publication_volume, applied_research, policy_research]
+  priority: 5
+
+prof_analyst_platform:
+  section: professional
+  text: "Proposed Fiscal-Treasury-Bank Information Platform -- recognised as regional innovation"
+  lines: 1
+  proves: [innovation, institutional_impact, technology_initiative, recognised_contribution]
+  priority: 4
+
+prof_analyst_inspections:
+  section: professional
+  text: "Performed law enforcement inspections on treasury agency business banks"
+  lines: 1
+  proves: [regulatory_experience, compliance, financial_regulation]
+  priority: 3
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SKILLS
+# ─────────────────────────────────────────────────────────────────────────────
+skills_methods:
+  section: skills
+  text: "Quantitative Methods: Panel econometrics, survival analysis (Cox/PWP), ML (XGBoost, RF), GAMM, PSM, event studies"
+  lines: 1
+  proves: [quantitative_methods, econometrics, ML_skills, survival_analysis, advanced_statistics]
+  priority: 8
+
+skills_software:
+  section: skills
+  text: "Software: Stata (5+ yrs), Python (3+ yrs), R (2+ yrs), LaTeX"
+  lines: 1
+  proves: [software_skills, stata, python, R, programming]
+  priority: 7
+
+skills_data:
+  section: skills
+  text: "Data Sources: WRDS (Compustat, CRSP, BoardEx, ExecuComp), Bloomberg, Wind"
+  lines: 1
+  proves: [data_literacy, financial_databases, WRDS, bloomberg]
+  priority: 5
+
+skills_languages:
+  section: skills
+  text: "Languages: Mandarin Chinese (Native), English (Fluent)"
+  lines: 1
+  proves: [bilingual, mandarin, english, international]
+  priority: 4
+
+# ─────────────────────────────────────────────────────────────────────────────
+# AWARDS
+# ─────────────────────────────────────────────────────────────────────────────
+award_edinburgh:
+  section: awards
+  text: "Edinburgh Award Scholarship (£30,000), University of Edinburgh, 2021"
+  lines: 1
+  proves: [competitive_award, funding_track_record, research_quality, scholarship]
+  priority: 7
+
+award_outstanding_grad:
+  section: awards
+  text: "Outstanding Graduate, Newcastle University, 2019"
+  lines: 1
+  proves: [academic_achievement, competitive_award]
+  priority: 4
+
+award_pboc_lecturer:
+  section: awards
+  text: "Excellent Lecturer -- Three Hundred Projects, PBOC, 2018"
+  lines: 1
+  proves: [teaching_recognition, communication_skills, professional_development]
+  priority: 4
+
+award_party_member_2018:
+  section: awards
+  text: "Outstanding Party Member, PBOC Changsha Branch, 2018"
+  lines: 1
+  proves: [leadership, service, professional_recognition]
+  priority: 2
+
+award_party_member_2016:
+  section: awards
+  text: "Outstanding Party Member, PBOC Changsha Branch, 2016"
+  lines: 1
+  proves: [leadership, service]
+  priority: 1
+
+award_top_ten_2014:
+  section: awards
+  text: "Top Ten Clerks of Year 2014, PBOC Yiyang Branch, 2015"
+  lines: 1
+  proves: [professional_recognition, performance]
+  priority: 2
+
+award_speech:
+  section: awards
+  text: "Speech Competition First Prize, PBOC Wuhan & Hunan Branch, 2014"
+  lines: 1
+  proves: [communication_skills, presentation_skills, competitive_award]
+  priority: 3
+
+award_top_ten_2013:
+  section: awards
+  text: "Top Ten Clerks, PBOC Yiyang Branch, 2013"
+  lines: 1
+  proves: [professional_recognition]
+  priority: 1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SERVICE
+# ─────────────────────────────────────────────────────────────────────────────
+service_ambassador:
+  section: service
+  text: "Campus Ambassador -- only PhD rep, Edinburgh Business School, 2021--Present"
+  lines: 1
+  proves: [university_service, student_recruitment, leadership, outreach]
+  priority: 4
+
+service_residence:
+  section: service
+  text: "Residence Assistant -- 30+ events/yr for 200+ residents, Edinburgh, 2021--Present"
+  lines: 1
+  proves: [community_building, event_management, pastoral_care, leadership]
+  priority: 3
+
+service_volunteer:
+  section: service
+  text: "English Language Volunteer -- refugee support, Newcastle, 2019--2020"
+  lines: 1
+  proves: [volunteering, community_engagement, cross_cultural, social_impact]
+  priority: 3
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CERTIFICATIONS
+# ─────────────────────────────────────────────────────────────────────────────
+cert_cfa:
+  section: certifications
+  text: "CFA Level II -- Passed"
+  lines: 1
+  proves: [professional_certification, finance_qualification, CFA, industry_standard]
+  priority: 6
+
+cert_cpa:
+  section: certifications
+  text: "Certificate of Accounting Professional (China)"
+  lines: 1
+  proves: [professional_certification, accounting_qualification, chinese_certification]
+  priority: 3
+
+cert_accountant:
+  section: certifications
+  text: "Intermediate Accountant Certificate (China)"
+  lines: 1
+  proves: [professional_certification, accounting_qualification]
+  priority: 2
+
+cert_english:
+  section: certifications
+  text: "Advanced Business English"
+  lines: 1
+  proves: [english_proficiency, business_english]
+  priority: 1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION HEADERS (fixed overhead, ~1 line each)
+# ─────────────────────────────────────────────────────────────────────────────
+_section_overhead:
+  note: "Each section header costs ~1.5 lines (title + rule). Budget 1.5 per section used."
+  typical_sections: 8
+  overhead_lines: 12
+
+_footer:
+  note: "Last updated line = 1 line"
+  lines: 1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PAGE BUDGET
+# ─────────────────────────────────────────────────────────────────────────────
+_page_budget:
+  total_lines: 52          # 10pt, scale=0.92 geometry
+  header_lines: 3          # name + subtitle + contact
+  section_overhead: 12     # ~8 sections × 1.5 lines
+  footer_lines: 1
+  available_for_content: 36  # 52 - 3 - 12 - 1
