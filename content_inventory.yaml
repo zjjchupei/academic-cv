@@ -37,7 +37,7 @@ profile_research:
   variant_of: profile
   latex: |
     \section{Profile}
-    PhD researcher in corporate governance and technology management, with expertise in machine learning, survival analysis, and panel data econometrics. Doctoral research investigates the timing and dynamics of Chief Technology Officer appointments, contributing to upper echelons theory and strategic leadership literature. Published in the \textit{International Journal of Finance \& Economics} with four additional working papers targeting top-tier journals. Eight years of professional experience in financial policy analysis at the People's Bank of China. Seeking a research-focused academic position in business and management.
+    PhD researcher in corporate governance and technology management, with expertise in machine learning, survival analysis, and panel data econometrics. Doctoral research investigates the timing and dynamics of Chief Technology Officer appointments, contributing to upper echelons theory and strategic leadership literature. Published in the \textit{International Journal of Finance \& Economics} with four additional working papers targeting top-tier journals. Over five years of professional experience in financial policy analysis at the People's Bank of China. Seeking a research-focused academic position in business and management.
   lines: 6
   proves: [phd, research_focus, quantitative_methods, industry_experience, research_vision, publication_record]
   priority: 10
@@ -47,7 +47,7 @@ profile_teaching:
   variant_of: profile
   latex: |
     \section{Profile}
-    PhD researcher with a strong commitment to excellence in teaching, holding a Postgraduate Certificate in Academic Practice from the University of Edinburgh. Three years of university teaching experience delivering 120+ tutorial sessions to 400+ students in corporate finance, supervising 20+ MSc dissertations with 5 awarded Distinction. Research expertise in corporate governance and quantitative methods (machine learning, survival analysis, panel econometrics). Published in the \textit{International Journal of Finance \& Economics} . Eight years of professional experience at the People's Bank of China, bringing real-world insights to the classroom.
+    PhD researcher with a strong commitment to excellence in teaching, holding a Postgraduate Certificate in Academic Practice from the University of Edinburgh. Three years of university teaching experience delivering 120+ tutorial sessions to 400+ students in corporate finance, supervising 20+ MSc dissertations with 5 awarded Distinction. Research expertise in corporate governance and quantitative methods (machine learning, survival analysis, panel econometrics). Published in the \textit{International Journal of Finance \& Economics} . Over five years of professional experience at the People's Bank of China, bringing real-world insights to the classroom.
   lines: 6
   proves: [phd, teaching_focus, teaching_qualification, quantified_teaching, industry_experience, publication_record]
   priority: 10
@@ -57,7 +57,7 @@ profile_balanced:
   variant_of: profile
   latex: |
     \section{Profile}
-    PhD researcher in corporate governance and technology management, with expertise in machine learning, survival analysis, and panel data econometrics. Doctoral research investigates the timing and dynamics of Chief Technology Officer appointments, contributing to upper echelons theory and strategic leadership literature. Three years of university teaching experience with 400+ students taught and 20+ MSc dissertations supervised. Published in the \textit{International Journal of Finance \& Economics} . Eight years of professional experience in financial policy analysis at the People's Bank of China.
+    PhD researcher in corporate governance and technology management, with expertise in machine learning, survival analysis, and panel data econometrics. Doctoral research investigates the timing and dynamics of Chief Technology Officer appointments, contributing to upper echelons theory and strategic leadership literature. Three years of university teaching experience with 400+ students taught and 20+ MSc dissertations supervised. Published in the \textit{International Journal of Finance \& Economics} . Over five years of professional experience in financial policy analysis at the People's Bank of China.
   lines: 6
   proves: [phd, research_focus, teaching_focus, quantitative_methods, industry_experience, publication_record]
   priority: 10
@@ -397,10 +397,10 @@ prof_analyst_header:
   section: professional
   latex: |
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{Treasury Statistics Analyst} & People's Bank of China, Yiyang Branch (6 yrs) & 2011 -- 2017 \\
+    \textbf{Treasury Statistics Analyst} & People's Bank of China, Yiyang Branch & 2014 -- 2017 \\
     \end{tabularx}
   lines: 1
-  proves: [industry_experience, treasury, statistics, central_banking, long_tenure]
+  proves: [industry_experience, treasury, statistics, central_banking]
   priority: 6
 
 prof_analyst_papers:
