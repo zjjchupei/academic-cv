@@ -22,7 +22,7 @@ jobs:
         run: pip install pyyaml
 
       - name: Generate cv.tex from atoms
-        run: python build_cv.py --full
+        run: python build_cv.py --full --no-compile
 
       - name: Compile CV with LaTeX
         uses: dante-ev/latex-action@latest

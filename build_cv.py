@@ -384,6 +384,7 @@ if __name__ == "__main__":
     parser.add_argument("--jd", help="Path to job description")
     parser.add_argument("--preset", choices=["research", "teaching", "balanced"])
     parser.add_argument("--full", action="store_true", help="Generate full CV (all atoms, no page limit)")
+    parser.add_argument("--no-compile", action="store_true", help="Skip compilation (for CI)")
     parser.add_argument("--list", action="store_true")
     parser.add_argument("--report-only", action="store_true")
     parser.add_argument("--deploy", help="Copy to school folder")
@@ -424,22 +425,25 @@ if __name__ == "__main__":
         shutil.copy2(tex, root_tex)
         print(f"  Generated: cv.tex ({len(selected)} atoms, ~{used} lines)")
 
-        subprocess.run(
-            ["latexmk", "-pdf", "-interaction=nonstopmode", "cv.tex"],
-            cwd=str(SCRIPT_DIR), capture_output=True, text=True
-        )
-        pdf = SCRIPT_DIR / "cv.pdf"
-        if pdf.exists():
-            try:
-                r = subprocess.run(["pdfinfo", str(pdf)], capture_output=True, text=True)
-                for line in r.stdout.split('\n'):
-                    if 'Pages:' in line:
-                        pages = int(line.split(':')[1].strip())
-                        print(f"  ✅ {pages} page(s) — {pdf}")
-            except:
-                print(f"  PDF: {pdf}")
+        if not args.no_compile:
+            subprocess.run(
+                ["latexmk", "-pdf", "-interaction=nonstopmode", "cv.tex"],
+                cwd=str(SCRIPT_DIR), capture_output=True, text=True
+            )
+            pdf = SCRIPT_DIR / "cv.pdf"
+            if pdf.exists():
+                try:
+                    r = subprocess.run(["pdfinfo", str(pdf)], capture_output=True, text=True)
+                    for line in r.stdout.split('\n'):
+                        if 'Pages:' in line:
+                            pages = int(line.split(':')[1].strip())
+                            print(f"  ✅ {pages} page(s) — {pdf}")
+                except:
+                    print(f"  PDF: {pdf}")
+            else:
+                print("  ❌ Compilation failed")
         else:
-            print("  ❌ Compilation failed")
+            print("  Skipped compilation (--no-compile)")
 
     elif args.school and (args.jd or args.preset):
         inv = load_inventory()
