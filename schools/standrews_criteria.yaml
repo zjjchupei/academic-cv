@@ -1,0 +1,121 @@
+# =============================================================================
+# Stage 1 Output: Criteria extracted by Claude from StAndrews JD
+# Source: 02_Applications/10_UK/10.23_StAndrews.../01_job_posting.md + 02_requirements.md
+# Extracted: 2026-03-21
+# Status: PENDING USER REVIEW
+# =============================================================================
+
+school: StAndrews
+position: Lecturer in Financial Management
+department: Business School - Department of Finance
+
+essential:
+  - id: E1
+    jd_text: "PhD in accounting, economics or finance"
+    tags: [phd, accounting_finance]
+    weight: 10
+
+  - id: E2
+    jd_text: "Specialised knowledge in accounting and financial management"
+    tags: [accounting_finance, accounting_degree, corporate_finance_teaching]
+    weight: 10
+
+  - id: E3
+    jd_text: "Ability to teach financial accounting AND management accounting at UG and PG"
+    tags: [teaching_experience_UG, postgraduate_teaching, curriculum_design, teaching_breadth]
+    weight: 9
+
+  - id: E4
+    jd_text: "Evidence of commitment to high-quality academic teaching at UG/PG levels"
+    tags: [teaching_experience_UG, quantified_teaching, sustained_teaching, supervision_PG, student_outcomes]
+    weight: 9
+
+  - id: E5
+    jd_text: "Developing research track record with clear potential for high-quality publications"
+    tags: [publication_record, research_pipeline, research_quality, top_journal_targets, peer_reviewed]
+    weight: 8
+
+  - id: E6
+    jd_text: "Effective communicator (orally and in writing)"
+    tags: [conference_presentation, presentation_skills, research_dissemination, communication_skills]
+    weight: 7
+
+  - id: E7
+    jd_text: "Ability to communicate complex material to non-specialist audiences"
+    tags: [teaching_experience_UG, case_based_teaching, industry_experience]
+    weight: 6
+
+  - id: E8
+    jd_text: "Collegiality and willingness to work in collaborative environment"
+    tags: [university_service, community_building, team_mentoring, mentoring]
+    weight: 5
+
+  - id: E9
+    jd_text: "Administrative and IT skills"
+    tags: [software_skills, data_literacy, curriculum_design]
+    weight: 5
+
+desirable:
+  - id: D1
+    jd_text: "Tertiary teaching qualification"
+    tags: [teaching_qualification, HEA_equivalent, pedagogy]
+    weight: 9
+    note: "你有 PGCert — 这是强项，权重提升"
+
+  - id: D2
+    jd_text: "Research record in responsible and sustainable accounting/finance"
+    tags: [sustainable_finance, ESG, responsible_business]
+    weight: 8
+    note: "JD 多次强调 responsible/sustainable，对应研究中心"
+
+  - id: D3
+    jd_text: "Experience of postgraduate supervision"
+    tags: [supervision_PG, quantified_supervision, student_outcomes, supervision_excellence]
+    weight: 7
+
+  - id: D4
+    jd_text: "Track record in attracting research grants/external funding"
+    tags: [funded_research, external_funding, funding_track_record]
+    weight: 5
+    note: "你目前无 grant 记录，但 scholarship 可部分证明"
+
+  - id: D5
+    jd_text: "Credible plans for seeking external research funding"
+    tags: [research_vision, research_pipeline]
+    weight: 5
+
+  - id: D6
+    jd_text: "Interest in inter-disciplinary and impact-driven research"
+    tags: [corporate_governance, technology_management, institutional_impact, research_in_practice]
+    weight: 6
+
+  - id: D7
+    jd_text: "Participation in academic/professional associations"
+    tags: [conference_presentation, international_conference, CFA, professional_certification]
+    weight: 4
+
+  - id: D8
+    jd_text: "Impact and engagement evidence"
+    tags: [industry_experience, policy_analysis, institutional_impact, research_in_practice]
+    weight: 6
+
+  - id: D9
+    jd_text: "Knowledge of current challenges in HE (curriculum, QA)"
+    tags: [teaching_qualification, pedagogy, curriculum_design, HEA_equivalent]
+    weight: 5
+    note: "PGCert 直接覆盖"
+
+  - id: D10
+    jd_text: "Professional experience in accounting/finance/policy"
+    tags: [industry_experience, central_banking, policy_analysis, treasury, leadership]
+    weight: 7
+
+  - id: D11
+    jd_text: "Ability to lead a research initiative"
+    tags: [research_experience, competitive_selection, research_excellence, leadership]
+    weight: 5
+
+  - id: D12
+    jd_text: "Aptitude in administrative tasks"
+    tags: [leadership, management, event_management, curriculum_design]
+    weight: 4

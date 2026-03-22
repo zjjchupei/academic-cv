@@ -102,6 +102,22 @@ PRESETS = {
 }
 
 
+def load_criteria_yaml(path: str) -> dict:
+    """Load Claude-extracted criteria from YAML. Flatten tags into weighted dict."""
+    with open(path, 'r') as f:
+        data = yaml.safe_load(f)
+
+    criteria = {}
+    for group in ['essential', 'desirable']:
+        for item in data.get(group, []):
+            weight = item.get('weight', 5)
+            for tag in item.get('tags', []):
+                # If tag appears in multiple criteria, keep the highest weight
+                if tag not in criteria or criteria[tag] > weight:
+                    criteria[tag] = max(criteria.get(tag, 0), weight)
+    return criteria
+
+
 def extract_criteria_from_jd(jd_path: str) -> dict:
     with open(jd_path, 'r') as f:
         content = f.read().lower()
@@ -242,17 +258,37 @@ def generate_onepage_tex(school: str, selected: list) -> Path:
             else:
                 orphan_bullets.append(c)
 
-        # Render each parent followed by its children
+        # Build after → follower map (for positioning like PGCert after PhD)
+        after_map = defaultdict(list)
+        no_after = []
         for p in parents:
-            latex = p['atom']['latex'].strip()
+            after_target = p['atom'].get('after')
+            if after_target:
+                after_map[after_target].append(p)
+            else:
+                no_after.append(p)
+
+        # Render: each parent + its bullets + any "after" followers
+        rendered = set()
+        def render_atom(a):
+            if a['id'] in rendered:
+                return
+            rendered.add(a['id'])
+            latex = a['atom']['latex'].strip()
             lines.append(latex)
-            kids = children_map.get(p['id'], [])
+            kids = children_map.get(a['id'], [])
             if kids:
                 lines.append(r"\begin{itemize}[nosep, leftmargin=1em, itemsep=1pt, label=--]")
                 for k in kids:
                     lines.append(f"    \\item {k['atom']['latex'].strip()}")
                 lines.append(r"\end{itemize}")
             lines.append("")
+            # Render any atoms that should come "after" this one
+            for follower in after_map.get(a['id'], []):
+                render_atom(follower)
+
+        for p in no_after:
+            render_atom(p)
 
         # Render orphan bullets (no parent)
         if orphan_bullets:
@@ -358,6 +394,61 @@ def print_report(criteria: dict, selected: list, covered: set, used_lines: int):
 # LIST
 # ─────────────────────────────────────────────────────────────────────────────
 
+def print_requirement_coverage(criteria_path: str, selected: list):
+    """Show coverage for each individual JD requirement (not just tags)."""
+    with open(criteria_path, 'r') as f:
+        data = yaml.safe_load(f)
+
+    # Collect all proves from selected atoms
+    all_proves = set()
+    atom_proves_map = {}  # tag → atom_id
+    for a in selected:
+        for tag in a['atom'].get('proves', []):
+            all_proves.add(tag)
+            if tag not in atom_proves_map:
+                atom_proves_map[tag] = a['id']
+
+    print("\n" + "=" * 80)
+    print("  PER-REQUIREMENT COVERAGE (每条 JD 要求的覆盖情况)")
+    print("=" * 80)
+
+    for group_name, label in [('essential', 'ESSENTIAL'), ('desirable', 'DESIRABLE')]:
+        items = data.get(group_name, [])
+        if not items:
+            continue
+        print(f"\n  [{label}]")
+        for item in items:
+            req_id = item['id']
+            text = item['jd_text'][:50]
+            tags = item.get('tags', [])
+            matched_tags = [t for t in tags if t in all_proves]
+            coverage = len(matched_tags) / len(tags) if tags else 0
+
+            if coverage >= 0.5:
+                icon = "✅"
+            elif coverage > 0:
+                icon = "⚠️"
+            else:
+                icon = "❌"
+
+            covering_atom = ""
+            if matched_tags:
+                covering_atom = atom_proves_map.get(matched_tags[0], "?")
+
+            note = item.get('note', '')
+            note_str = f"  ({note})" if note else ""
+
+            print(f"    {icon} {req_id:<4} {text:<52} {len(matched_tags)}/{len(tags)} tags  ← {covering_atom}{note_str}")
+
+    # Summary
+    all_items = data.get('essential', []) + data.get('desirable', [])
+    covered = sum(1 for item in all_items
+                  if any(t in all_proves for t in item.get('tags', [])))
+    total = len(all_items)
+    print(f"\n  总覆盖: {covered}/{total} 条 JD 要求有至少 1 个 tag 被选中的 atom 覆盖")
+    print("=" * 80)
+
+
 def list_atoms():
     inv = load_inventory()
     print(f"\n  Content Inventory: {len(inv)} atoms\n")
@@ -380,7 +471,8 @@ def list_atoms():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build precision one-page CV")
     parser.add_argument("--school", help="School short name")
-    parser.add_argument("--jd", help="Path to job description")
+    parser.add_argument("--jd", help="Path to job description (keyword matching, less accurate)")
+    parser.add_argument("--criteria", help="Path to criteria.yaml (Claude-extracted, recommended)")
     parser.add_argument("--preset", choices=["research", "teaching", "balanced"])
     parser.add_argument("--full", action="store_true", help="Generate full CV (all atoms, no page limit)")
     parser.add_argument("--no-compile", action="store_true", help="Skip compilation (for CI)")
@@ -444,12 +536,16 @@ if __name__ == "__main__":
         else:
             print("  Skipped compilation (--no-compile)")
 
-    elif args.school and (args.jd or args.preset):
+    elif args.school and (args.criteria or args.jd or args.preset):
         inv = load_inventory()
         print(f"\n  Loaded {len(inv)} atoms")
 
-        if args.jd:
-            print(f"  JD: {args.jd}")
+        if args.criteria:
+            # Stage 1 output: Claude-extracted criteria (RECOMMENDED)
+            print(f"  Criteria file: {args.criteria}")
+            criteria = load_criteria_yaml(args.criteria)
+        elif args.jd:
+            print(f"  JD (keyword matching): {args.jd}")
             criteria = extract_criteria_from_jd(args.jd)
         else:
             print(f"  Preset: {args.preset.upper()}")
@@ -460,6 +556,10 @@ if __name__ == "__main__":
         scored = score_atoms(inv, criteria)
         selected, used, covered = select_atoms(scored)
         print_report(criteria, selected, covered, used)
+
+        # If using criteria YAML, show per-requirement coverage
+        if args.criteria:
+            print_requirement_coverage(args.criteria, selected)
 
         if not args.report_only:
             tex = generate_onepage_tex(args.school, selected)
