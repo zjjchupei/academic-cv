@@ -1,0 +1,141 @@
+# =============================================================================
+# Stage 1 Output: Criteria extracted by Claude from Bath JD
+# Source: 02_Applications/10_UK/10.24_Bath_Finance_20260412/jd_snapshot.md
+#         + Lecturer in Finance JD - February 2026.doc (Person Specification)
+# Extracted: 2026-03-25
+# Status: PENDING USER REVIEW
+# =============================================================================
+
+school: Bath
+position: Lecturer in Finance (Teaching) x 2
+department: School of Management - Accounting, Finance and Law Division (AFL)
+
+essential:
+  - id: E1
+    jd_text: "Undergraduate degree (e.g. BA, BSc, BEng)"
+    tags: [accounting_degree, quantitative_background]
+    weight: 6
+
+  - id: E2
+    jd_text: "PhD degree in subject area of direct relevance; OR Professional Doctorate; OR Professional qualification and relevant experience equivalent to PhD; OR Professional experience equivalent to PhD"
+    tags: [phd, accounting_finance]
+    weight: 10
+
+  - id: E3
+    jd_text: "Demonstrates depth and breadth of understanding of subject matters at a complex conceptual level"
+    tags: [accounting_finance, corporate_finance_teaching, quantitative_methods]
+    weight: 9
+
+  - id: E4
+    jd_text: "Excellent written and verbal communication skills"
+    tags: [communication_skills, publication_record, conference_presentation]
+    weight: 7
+
+  - id: E5
+    jd_text: "Excellent presentation skills"
+    tags: [presentation_skills, conference_presentation, teaching_experience_UG]
+    weight: 7
+
+  - id: E6
+    jd_text: "Demonstrated ability to work in teams"
+    tags: [community_building, university_service, team_mentoring]
+    weight: 6
+
+  - id: E7
+    jd_text: "Ability to supervise student projects"
+    tags: [supervision_PG, quantified_supervision, student_outcomes]
+    weight: 8
+    note: "20+ MSc dissertations supervised, 5 Distinctions — strong evidence"
+
+  - id: E8
+    jd_text: "Well-developed interpersonal skills including interactive teaching and student support"
+    tags: [teaching_experience_UG, quantified_teaching, pastoral_care, student_support]
+    weight: 8
+    note: "120+ tutorials, 400+ students — strong evidence"
+
+  - id: E9
+    jd_text: "Commitment to excellence in education and to providing the highest quality experience for students"
+    tags: [teaching_focus, teaching_qualification, pedagogy, sustained_teaching]
+    weight: 9
+    note: "PGCert demonstrates formal commitment to teaching excellence"
+
+  - id: E10
+    jd_text: "Commitment to working within professional and ethical codes of conduct"
+    tags: [professional_certification, cfa]
+    weight: 5
+
+  - id: E11
+    jd_text: "Commitment to working as an academic citizen, collaboratively and with shared vision and responsibility"
+    tags: [university_service, community_building, mentoring]
+    weight: 6
+
+desirable:
+  - id: D1
+    jd_text: "Membership of professional body"
+    tags: [professional_certification, cfa, CFA]
+    weight: 6
+    note: "CFA Level II candidate — matches"
+
+  - id: D2
+    jd_text: "Higher education teaching qualification or professional recognition (e.g. PGCert, FHEA or equivalent)"
+    tags: [teaching_qualification, HEA_equivalent, pedagogy]
+    weight: 10
+    note: "PGCert from Edinburgh — EXACT MATCH, very strong advantage. May exempt from 1-year PHEAF probation"
+
+  - id: D3
+    jd_text: "Experience of teaching at UG/PG level using a range of methods"
+    tags: [teaching_experience_UG, postgraduate_teaching, quantified_teaching, sustained_teaching, teaching_breadth]
+    weight: 9
+    note: "3 years UG tutorials + PG dissertation supervision — strong match"
+
+  - id: D4
+    jd_text: "Demonstrable expertise in the development of taught programmes and teaching methods, including assessment"
+    tags: [curriculum_design, assessment_experience, material_development, pedagogy]
+    weight: 8
+    note: "PGCert covers programme development and assessment design"
+
+  - id: D5
+    jd_text: "A creative vision for development, implementation and delivery of successful taught programmes and teaching innovations"
+    tags: [curriculum_design, new_module_proposal, teaching_focus]
+    weight: 7
+    note: "Can propose fintech/quantitative modules for new BSc Finance"
+
+  - id: D6
+    jd_text: "Excellent organisational and administrative skills"
+    tags: [leadership, management, stakeholder_management]
+    weight: 5
+
+  - id: D7
+    jd_text: "Ability to form positive working relationships within University, community, business and other partners"
+    tags: [industry_experience, community_building, cross_cultural, stakeholder_management]
+    weight: 5
+
+# Context requirements extracted from JD body (not in formal Person Spec but emphasized)
+context:
+  - id: C1
+    jd_text: "Strong background in finance"
+    tags: [accounting_finance, phd, cfa, banking]
+    weight: 10
+    note: "PhD in A&F + CFA L2 + PBoC = triple evidence"
+
+  - id: C2
+    jd_text: "Capability in mathematical or computational areas (financial engineering & derivatives, AI, FinTech)"
+    tags: [quantitative_methods, ML_skills, programming, software_skills, python, R, stata]
+    weight: 7
+    note: "ML, survival analysis, panel econometrics, Python/R/Stata — partial match (not derivatives-specific)"
+
+  - id: C3
+    jd_text: "Relevant professional experience in banking or running a financial trading platform"
+    tags: [industry_experience, central_banking, banking, banking_sector, policy_analysis, treasury]
+    weight: 8
+    note: "5+ years at People's Bank of China — STRONG alternative to derivatives/FinTech"
+
+  - id: C4
+    jd_text: "Ready to take on teaching immediately in Semester 1 2026 (September/October)"
+    tags: [teaching_experience_UG, sustained_teaching]
+    weight: 8
+
+  - id: C5
+    jd_text: "Prepared to take on administrative roles later (e.g. Director of Studies)"
+    tags: [leadership, management, university_service]
+    weight: 5
